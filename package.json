@@ -1,0 +1,27 @@
+{
+  "name": "sequelize-intro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:report": "jest --coverage=true"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MartinRenteria/sequelize-intro.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MartinRenteria/sequelize-intro/issues"
+  },
+  "homepage": "https://github.com/MartinRenteria/sequelize-intro#readme",
+  "dependencies": {
+    "jest": "^27.4.3",
+    "sequelize": "^6.12.0-alpha.1",
+    "sqlite3": "^5.0.2"
+  }
+}
