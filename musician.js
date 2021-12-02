@@ -8,7 +8,9 @@ class Musician extends Model {
 // Create attributes (columns) for our model
 Musician.init({
 	name: DataTypes.STRING, 
+	age: DataTypes.INTEGER,
 	instrument: DataTypes.STRING
+
 }, {
 	sequelize, // What database is our table stored in
 	timestamps: false,
