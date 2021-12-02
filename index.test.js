@@ -8,7 +8,7 @@ describe('Musician Database', () => {
 	})
 
 	test('can create a musician', async() => {
-		const testMusician = await Musician.create({name : 'Prince'})
+		const testMusician = await Musician.create({name : 'Prince', instrument : 'Guitar'})
 		expect(testMusician.name).toBe('Prince')
 	})
 

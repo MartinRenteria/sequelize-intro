@@ -6,7 +6,6 @@
   "scripts": {
     "test": "jest",
     "test:report": "jest --coverage=true"
-
   },
   "repository": {
     "type": "git",
