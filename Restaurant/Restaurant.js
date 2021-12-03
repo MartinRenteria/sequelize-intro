@@ -11,7 +11,7 @@ class Restaurant extends Model {
 //Creates rows for my table and thier desired datatypes
 Restaurant.init({
     name: DataTypes.STRING,
-    image: DataTypes.STRING,
+    location: DataTypes.STRING,
 }, {
 
     sequelize, // Database 

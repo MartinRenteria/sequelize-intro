@@ -9,10 +9,15 @@ describe('Relationships', () => {
         await sequelize.sync({ force: true });
     })
     
-    test('restaurants have menus', async () => {
-        const restaurant = await Restaurant.create({name: 'Maggianos', image: 'http://some.image.url'})
+    test('restaurants have names', async () => {
+        const restaurant = await Restaurant.create({name: 'Maggianos'})
 
         expect(restaurant.name).toBe("Maggianos");
     })
 
+    test('restaurants have locations', async () => {
+        const restaurant = await Restaurant.create({name: 'Maggianos', location: 'Bellevue WA'})
+
+        expect(restaurant.location).toBe("Bellevue WA");
+    })
 })
