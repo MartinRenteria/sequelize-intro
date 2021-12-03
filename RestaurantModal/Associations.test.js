@@ -46,7 +46,7 @@ test('Menu Items have a price', async () => {
 
 //Associations suites
 
-    test('restaurants have menus', async () => {
+    test('restaurants and menus obtain foreign keys', async () => {
         const restaurant = await Restaurant.create({name: 'Maggianos', location: 'Bellevue WA'})
         const menu = await Menu.create({name: 'Breakfast'});
         await restaurant.addMenu(menu);
