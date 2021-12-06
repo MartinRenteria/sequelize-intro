@@ -33,14 +33,31 @@ test('Menus have names', async () => {
 
 // Test suites for Menu-item
 test('Menu Items have names', async () => {
-    const menuItem = await MenuItem.create({name: 'Spaghetti'})
+    const menuItem = await MenuItem.create({name: 'Meatballs', price : 11.99})
 
-    expect(menuItem.name).toBe('Spaghetti');
+    expect(menuItem.name).toBe('Meatballs');
 })
 
 test('Menu Items have a price', async () => {
-    const menuItem = await MenuItem.create({name: 'Spaghetti', price: '10.99'})
+    const menuItem = await MenuItem.create({name: 'Spaghetti', price: 10.99})
 
-    expect(menuItem.price).toBe('10.99');
+    expect(menuItem.price).toBe(10.99);
 })
+
+//Associations suites
+
+    test('restaurants and menus obtain foreign keys', async () => {
+        const restaurant = await Restaurant.create({name: 'Maggianos', location: 'Bellevue WA'})
+        const menu = await Menu.create({name: 'Breakfast'});
+        await restaurant.addMenu(menu);
+
+        const menus = await restaurant.getMenus();
+        const menuItem = await MenuItem.create({name: 'Pasta', price: 10.00});
+        await menus[0].addMenuItem(menuItem);
+        const menuItems = await menus[0].getMenuItems();
+
+        expect(menus[0].name).toBe('Breakfast');
+        expect(menuItems.length).toBe(1);
+    })
+
 })
