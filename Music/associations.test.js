@@ -1,5 +1,5 @@
 const {sequelize} = require("./db");
-const {Musician, Band} = require("../associations")
+const {Musician, Band} = require("./associations")
 
 describe('Musician Database', () => {
 

@@ -1,6 +1,6 @@
 // Tells sequelize that I want these tools/props within my datavase
-const {sequelize, DataTypes, Model} = require('./RestaurantModal/db');
-const {Menu} = require('./RestaurantModal/Menu')
+const {sequelize, DataTypes, Model} = require('./db');
+const {Menu} = require('./Menu')
 
 
 // Restaurant table for database

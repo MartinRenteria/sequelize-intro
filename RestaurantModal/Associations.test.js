@@ -1,7 +1,7 @@
 // Imports my db file that stores/holds my data
 const {sequelize} = require('./db');
 // Imports model info in order to use modal required here
-const {Restaurant} = require('../Restaurant');
+const {Restaurant} = require('./Restaurant');
 const {Menu} = require('./Menu');
 const {MenuItem} = require('./MenuItem')
 
