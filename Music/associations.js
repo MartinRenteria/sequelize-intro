@@ -1,5 +1,4 @@
 const {sequelize, DataTypes, Model} = require('./db');
-
 const { Musician } = require('./Musician');
 const { Band } = require('./Band');
 

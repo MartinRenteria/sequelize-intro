@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test:report": "jest --coverage=true"
+    "test:report": "jest --coverage=true",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -21,8 +22,10 @@
   "dependencies": {
     "express": "^4.17.1",
     "jest": "^27.4.3",
-    "nodemon": "^2.0.15",
     "sequelize": "^6.12.0-alpha.1",
     "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
