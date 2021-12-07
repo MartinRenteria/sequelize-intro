@@ -49,6 +49,28 @@ app.get("/Musician/:id", async (req, res) => {
   res.json(oneMusician);
 });
 
+// Adding a new musician object to database
+app.post('/musicians', async (req, res) => {
+	let newMusician = await Musician.create(req.body);
+	res.send('Created!')
+})
+
+// Updating a new musician object to database
+app.put("/musicians/:id", async (req, res) => {
+	let updated = await Musician.update(req.body, {
+		where : {id : req.params.id} // Update a musician where the id matches, based on req.body
+	})
+	res.send("Updated!!")
+})
+
+// Deleting a musician object by id 
+app.delete('/musicians/:id', async (req, res) => {
+	await Musician.destroy({
+		where : {id : req.params.id} // Destory an Musician where this object matches
+	})
+	res.send("Deleted!!")
+})
+
 app.get("/Band", async (req, res) => {
   const allBands = await Band.findAll();
 
@@ -63,11 +85,21 @@ app.get("/Band/:id", async (req, res) => {
 
 /* These are the routes for my Restaurant database */
 
+// This will get back all restaurants as json Objects
+
+// app.get("/restaurants", async (req, res) => {
+//   // Goes into the database and looks for all the Menu Items and makes an array of json objects
+//   const restaurants = await Restaurant.findAll()
+//   // Server will respond with all the items found in the database
+//   res.json(restaurants);
+// });
+
+
 // Making a request to /Restaurants
 app.get("/restaurants", async (req, res) => {
   // Goes into the database and looks for all the Menu Items and makes an array of json objects
   const restaurants = await Restaurant.findAll()
-  // Server will respond with all the items found in the database
+  // Server will render handlebars template
   res.render("restaurants", {restaurants});
 });
 
@@ -90,19 +122,34 @@ app.get("/Restaurants/:id", async (req, res) => {
 });
 
 // Making a request to /Menu
+// app.get("/Menu", async (req, res) => {
+//   // Goes into the database and looks for all the Menu Items and makes an array of json objects
+//   const allMenus = await Menu.findAll();
+//   // Server will respond with all the items found in the database
+//   res.json(allMenus);
+// });
+
 app.get("/Menu", async (req, res) => {
   // Goes into the database and looks for all the Menu Items and makes an array of json objects
-  const allMenus = await Menu.findAll();
+  const menus = await Menu.findAll();
   // Server will respond with all the items found in the database
-  res.json(allMenus);
+  res.render('menu', { menus });
 });
 
+
 // Making a reqest to /MenuItems
+// app.get("/MenuItems", async (req, res) => {
+//   // Goes into the database and looks for all the Menu Items and makes an array of json objects
+//   const allMenuItems = await MenuItem.findAll();
+//   // Server will respond with all the items found in the database
+//   res.json(allMenuItems);
+// });
+
 app.get("/MenuItems", async (req, res) => {
   // Goes into the database and looks for all the Menu Items and makes an array of json objects
-  const allMenuItems = await MenuItem.findAll();
+  const menuItems = await MenuItem.findAll();
   // Server will respond with all the items found in the database
-  res.json(allMenuItems);
+  res.render('menuItem',{menuItems});
 });
 
 app.listen(port, () => {
