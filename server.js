@@ -19,6 +19,7 @@ const handlebars = expressHandlebars.create({
 //Tells express we are using handlebars
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars')
+app.set("views", "./views");
 
 app.get("/now", (request, response) => {
   const date = new Date();
@@ -63,11 +64,11 @@ app.get("/Band/:id", async (req, res) => {
 /* These are the routes for my Restaurant database */
 
 // Making a request to /Restaurants
-app.get("/Restaurants", async (req, res) => {
+app.get("/restaurants", async (req, res) => {
   // Goes into the database and looks for all the Menu Items and makes an array of json objects
-  const allRestaurants = await Restaurant.findAll();
+  const restaurants = await Restaurant.findAll()
   // Server will respond with all the items found in the database
-  res.json(allRestaurants);
+  res.render("restaurants", {restaurants});
 });
 
 // Making a request to /Restaurants-name/:name to call Restaurant by name parameter
@@ -83,9 +84,9 @@ app.get("/Restaurants-name/:name", async (req, res) => {
 // Making a request to /Restaurants/:id to call single Restaurant by ID
 app.get("/Restaurants/:id", async (req, res) => {
   // Goes into the database and looks for Restaurant with specific ID requested
-  const allRestaurant = await Restaurant.findByPk(req.params.id);
+  const restaurantId = await Restaurant.findByPk(req.params.id);
   // Server will respond with Restaurant by specific ID
-  res.json({ allRestaurant });
+  res.render("restaurant", { restaurantId });
 });
 
 // Making a request to /Menu
