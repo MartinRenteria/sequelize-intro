@@ -20,7 +20,10 @@
   },
   "homepage": "https://github.com/MartinRenteria/sequelize-intro#readme",
   "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.5",
     "express": "^4.17.1",
+    "express-handlebars": "^6.0.2",
+    "handlebars": "^4.7.7",
     "jest": "^27.4.3",
     "sequelize": "^6.12.0-alpha.1",
     "sqlite3": "^5.0.2"

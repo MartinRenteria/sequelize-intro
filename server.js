@@ -1,10 +1,24 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+const Handlebars = require('handlebars')
+const expressHandlebars = require('express-handlebars')
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 const { Restaurant, Menu, MenuItem } = require("./modals/index");
 const { Musician, Band } = require("./Music/associations");
 
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+//Configures handlebars library to work well w/ Express + Sequelize model
+const handlebars = expressHandlebars.create({
+  handlebars : allowInsecurePrototypeAccess(Handlebars)
+})
+
+//Tells express we are using handlebars
+app.engine('handlebars', handlebars.engine);
+app.set('view engine', 'handlebars')
 
 app.get("/now", (request, response) => {
   const date = new Date();
