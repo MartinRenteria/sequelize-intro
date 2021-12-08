@@ -104,7 +104,7 @@ app.get("/restaurants", async (req, res) => {
 });
 
 app.post('/restaurants', async (req, res) => {
-	let newRestaurant = await Restaurant.create(req.body);
+	let newRestaurant = await Restaurant.create(req.body); // Creates a new Restaurant, based on req.body
 	res.send('Created!')
 })
 
@@ -148,6 +148,11 @@ app.get("/Restaurants/:id", async (req, res) => {
 //   res.json(allMenus);
 // });
 
+app.get("/Menu/:id", async (req, res) => {
+	let menuId = await Menu.findByPk(req.params.id) // Finds all PK's of Menu Objects in database
+	res.send(menuId)
+})
+
 app.get("/Menu", async (req, res) => {
   // Goes into the database and looks for all the Menu Items and makes an array of json objects
   const menus = await Menu.findAll();
@@ -156,24 +161,23 @@ app.get("/Menu", async (req, res) => {
 });
 
 app.post('/Menu', async (req, res) => {
-	let newMenu = await Menu.create(req.body);
+	let newMenu = await Menu.create(req.body); // Creates a new Menu, based on req.body
 	res.send('Created!')
 })
 
 app.put("/Menu/:id", async (req, res) => {
 	let updatedMenu = await Menu.update(req.body, {
-		where : {id : req.params.id} // Update a musician where the id matches, based on req.body
+		where : {id : req.params.id} // Update a Menu where the id matches, based on req.body
 	})
 	res.send("Updated!!")
 })
 
 app.delete('/Menu/:id', async (req, res) => {
 	await Menu.destroy({
-		where : {id : req.params.id} // Destory an Musician where this object matches
+		where : {id : req.params.id} // Destory an Menu where this object matches
 	})
 	res.send("Deleted!!")
 })
-
 // Making a reqest to /MenuItems
 // app.get("/MenuItems", async (req, res) => {
 //   // Goes into the database and looks for all the Menu Items and makes an array of json objects
@@ -190,20 +194,20 @@ app.get("/MenuItems", async (req, res) => {
 });
 
 app.post('/MenuItems', async (req, res) => {
-	let newMenuItem = await MenuItem.create(req.body);
+	let newMenuItem = await MenuItem.create(req.body); // Creates a new MenuItem, based on req.body
 	res.send('Created!')
 })
 
 app.put("/MenuItems/:id", async (req, res) => {
 	let updatedMenuItem = await MenuItem.update(req.body, {
-		where : {id : req.params.id} // Update a musician where the id matches, based on req.body
+		where : {id : req.params.id} // Update a MenuItem where the id matches, based on req.body
 	})
 	res.send("Updated!!")
 })
 
 app.delete('/MenuItems/:id', async (req, res) => {
 	await MenuItem.destroy({
-		where : {id : req.params.id} // Destory an Musician where this object matches
+		where : {id : req.params.id} // Destory an MenuItem where this object matches
 	})
 	res.send("Deleted!!")
 })
